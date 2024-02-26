@@ -11,11 +11,12 @@ data:
       username: roboshop-admin
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-02-26T05:13:01Z"
+  creationTimestamp: "2024-02-26T11:13:45Z"
   name: aws-auth
   namespace: kube-system
-  resourceVersion: "1224"
-  uid: 73821be4-d8b4-4d12-8d8d-3b9510c476ad
+  resourceVersion: "74472"
+  uid: 6c9892d9-b7ad-4725-8ee7-c71aea137233
+
 
 
  
