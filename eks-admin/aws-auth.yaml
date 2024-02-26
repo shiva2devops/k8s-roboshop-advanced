@@ -4,7 +4,7 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::752692907119:role/eksctl-eks-cluster-nodegroup-spot-NodeInstanceRole-1D991C7C0OV94
+      rolearn: arn:aws:iam::823033372288:role/eksctl-spot-cluster-nodegroup-spot-NodeInstanceRole-qy40fvCu72w0
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
     - userarn: aarn:aws:iam::823033372288:user/roboshop-admin
