@@ -6,6 +6,7 @@ metadata:
   namespace: roboshop
   labels:
     app: mongodb
+    tier: db
 spec:
   ports:
   - port: 27017
@@ -41,7 +42,7 @@ spec:
           name: mongodb
         volumeMounts:
         - name: mongodb-volume
-          mountPath: /data
+          mountPath: /data/db
   volumeClaimTemplates:
   - metadata:
       name: mongodb-volume
