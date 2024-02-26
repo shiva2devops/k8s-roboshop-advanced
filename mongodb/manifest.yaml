@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb
+  namespace: roboshop
   labels:
     app: mongodb
 spec:
@@ -24,7 +25,7 @@ spec:
       name: mongodb
       tier: db # has to match .spec.template.metadata.labels
   serviceName: "mongodb"
-  replicas: 3 # by default is 1
+  replicas: 1 # by default is 1
   minReadySeconds: 10 # by default is 0
   template:
     metadata:
