@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  annotations:
+    deployment.kubernetes.io/change-cause: "Upgraded to version 2.0"
+  labels:
+    app: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2 # we asked for 10, we are okay if 9 are running at the time of upgrade
+      maxSurge: 2 # we asked for 10, we are okay at the time of upgrade 11 are running      
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: mshiva7396/web:k8
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: web
+ labels:
+  name: web
+  tier: frontend
+spec:
+ containers:
+ - name: web
+   imagePullPolicy: Always
+   image: mshiva7396/web:k8
+   ports:
+   - containerPort: 80
+   resources:
+     requests:
+       cpu: "100m"
+       memory: "128Mi"
+     limits:
+       cpu: "150m"
+       memory: "200Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: LoadBalancer
+  selector:
+    name: web
+    tier: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
