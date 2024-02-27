@@ -60,6 +60,9 @@ data:
             location /api/shipping/ {
                 proxy_pass http://shipping/;
                 }
+            location /api/payment/ {
+                proxy_pass http://payment/;
+                }
 
             proxy_http_version 1.1;
             location /images/ {
